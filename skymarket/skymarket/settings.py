@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "drf_spectacular",
+    "corsheaders",
     "users",
     "ads",
 ]
@@ -82,15 +83,31 @@ TEMPLATES = [
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
 # TODO здесь мы настраиваем аутентификацию и пагинацию
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 # TODO здесь мы настраиваем Djoser
-DJOSER = {}
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserRegistrationSerializer'
+    },
+    'LOGIN_FIELD': 'email'
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # TODO здесь необходимо настроить подключение к БД
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skymarket',
+        'USER': 'skymarket',
+        'PASSWORD': 'skymarket',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -141,22 +158,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}
-
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Ads_site API',
     'DESCRIPTION': 'My ads_site project',
     'VERSION': '1.0.0',
-}
-
-DJOSER = {
-    'SERIALIZERS': {
-        'user_create': 'users.serializers.UserRegistrationSerializer'
-    },
-    'LOGIN_FIELD': 'email'
 }
 
 # Include Email Backend
