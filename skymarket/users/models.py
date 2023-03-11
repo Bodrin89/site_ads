@@ -36,6 +36,7 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_admin
 
+
     # для корректной работы нам также необходимо
     # переопределить менеджер модели пользователя
 
