@@ -1,11 +1,11 @@
 from django.contrib.auth.models import BaseUserManager
+from django.db import models
 from django.utils.translation import gettext_lazy as _
-from ads import models
 
 
-class UserRoles:
-    ADMIN = 'ADMIN', _('admin')
-    USER = 'USER', _('user')
+class UserRoles(models.TextChoices):
+    ADMIN = 'admin', _('admin')
+    USER = 'user', _('user')
 
 
 class UserManager(BaseUserManager):

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.db import models
 from users.managers import UserManager, UserRoles
@@ -17,9 +19,11 @@ class User(AbstractBaseUser):
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    last_login = models.CharField(max_length=100, default=datetime.now())
+    is_active = models.BooleanField(default=False)
     phone = PhoneNumberField()
     email = models.EmailField(unique=True)
-    role = models.CharField(max_length=7)
+    role = models.CharField(max_length=7, choices=UserRoles.choices, default=UserRoles.USER)
     image = models.ImageField(null=True, blank=True, upload_to='django_media')
 
     @property

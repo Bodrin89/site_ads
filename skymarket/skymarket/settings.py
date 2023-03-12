@@ -65,7 +65,7 @@ ROOT_URLCONF = "skymarket.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'redoc/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,7 +90,8 @@ REST_FRAMEWORK = {
 # TODO здесь мы настраиваем Djoser
 DJOSER = {
     'SERIALIZERS': {
-        'user_create': 'users.serializers.UserRegistrationSerializer'
+        'user_create': 'users.serializers.UserRegistrationSerializer',
+        'current_user': 'users.serializers.CurrentUserSerializer',
     },
     'LOGIN_FIELD': 'email'
 }
