@@ -82,18 +82,22 @@ WSGI_APPLICATION = "skymarket.wsgi.application"
 
 # TODO здесь мы настраиваем аутентификацию и пагинацию
 REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 4,
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+    )
 }
 # TODO здесь мы настраиваем Djoser
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer',
-        'current_user': 'users.serializers.CurrentUserSerializer',
+        'user': 'users.serializers.UserCurrentSerializer',
+        'current_user': 'users.serializers.UserCurrentSerializer',
     },
     'LOGIN_FIELD': 'email'
+
 }
 
 # Database
@@ -174,3 +178,33 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
 
 AUTH_USER_MODEL = 'users.User'
+
+#
+# # Для логирования!
+# LOGGING = {
+#     'disable_existing_loggers': False,
+#     'version': 1,
+#     'handlers': {
+#         'console': {
+#             # logging handler that outputs log messages to terminal
+#             'class': 'logging.StreamHandler',
+#             'level': 'DEBUG', # message level to be written to console
+#         },
+#     },
+#     'loggers': {
+#         '': {
+#             # this sets root level logger to log debug and higher level
+#             # logs to console. All other loggers inherit settings from
+#             # root level logger.
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': False, # this tells logger to send logging message
+#                                 # to its parent (will send if set to True)
+#         },
+#         'django.db': {
+#             # django also has database level logging
+#             'level': 'DEBUG',
+#         },
+#     },
+# }
+#

@@ -12,7 +12,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
         fields = '__all__'
 
 
-class CurrentUserSerializer(serializers.ModelSerializer):
+class UserCurrentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User

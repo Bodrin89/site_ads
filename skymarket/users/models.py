@@ -24,7 +24,7 @@ class User(AbstractBaseUser):
     phone = PhoneNumberField()
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=7, choices=UserRoles.choices, default=UserRoles.USER)
-    image = models.ImageField(null=True, blank=True, upload_to='django_media')
+    image = models.CharField(max_length=200, null=True, blank=True)
 
     @property
     def is_superuser(self):
