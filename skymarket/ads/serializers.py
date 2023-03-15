@@ -6,8 +6,6 @@ from rest_framework.fields import SerializerMethodField
 from rest_framework.response import Response
 
 from ads.models import Ad, Comment
-from users.models import User
-
 
 class CommentSerializer(serializers.ModelSerializer):
     # TODO сериалайзер для модели

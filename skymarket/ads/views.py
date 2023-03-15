@@ -8,10 +8,6 @@ from ads.serializers import AdSerializer, AdMeSerializer, CommentSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 
-class AdPagination(pagination.PageNumberPagination):
-    pass
-
-
 @extend_schema_view(
     list=extend_schema(description='Получение всех объявлений', summary='Объявления'),
     retrieve=extend_schema(description='Получение объявления по id', summary='Объявление'),
