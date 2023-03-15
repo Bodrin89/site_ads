@@ -8,7 +8,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class User(AbstractBaseUser):
     # TODO переопределение пользователя.
-    # TODO подробности также можно поискать в рекоммендациях к проекту
     # также для работы модели пользователя должен быть переопределен
     # менеджер объектов
     USERNAME_FIELD = 'email'

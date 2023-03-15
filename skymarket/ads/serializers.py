@@ -21,6 +21,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class AdSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(read_only=True, slug_field="pk")
+
     class Meta:
         model = Ad
         fields = '__all__'
