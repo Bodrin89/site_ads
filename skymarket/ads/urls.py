@@ -14,10 +14,9 @@ me_router.register('', AdMeAPIView, basename='me')
 com_router = SimpleRouter()
 com_router.register(r"", CommentViewSet, basename='comment')
 
-
 urlpatterns = [
 
     path('me/', include(me_router.urls)),
-    path('<int:ad_pk>/comment/', include(com_router.urls)),
+    path('<int:ad_pk>/comments/', include(com_router.urls)),
     path('', include(ads_router.urls)),
 ]

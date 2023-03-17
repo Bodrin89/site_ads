@@ -18,7 +18,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 )
 class AdViewSet(ModelViewSet):
     queryset = Ad.objects.all().order_by('-created_at')
-    serializer_class = AdSerializer
 
     def perform_create(self, serializer):
         return serializer.save(author_id=self.request.user.pk)
@@ -33,6 +32,8 @@ class AdViewSet(ModelViewSet):
         else:
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
+
+    serializer_class = AdSerializer
 
 
 @extend_schema_view(

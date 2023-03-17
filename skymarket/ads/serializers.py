@@ -9,7 +9,6 @@ from ads.models import Ad, Comment
 
 class CommentSerializer(serializers.ModelSerializer):
     # TODO сериалайзер для модели
-
     author = serializers.SlugRelatedField(read_only=True, slug_field="pk")
     ad = serializers.SlugRelatedField(read_only=True, slug_field="pk")
 
@@ -19,6 +18,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class AdSerializer(serializers.ModelSerializer):
+    pk = serializers.PrimaryKeyRelatedField(read_only=True)
     author = serializers.SlugRelatedField(read_only=True, slug_field="pk")
 
     class Meta:
@@ -28,6 +28,7 @@ class AdSerializer(serializers.ModelSerializer):
 
 class AdMeSerializer(serializers.ModelSerializer):
 
+    pk = serializers.PrimaryKeyRelatedField(read_only=True)
     author = serializers.SlugRelatedField(read_only=True, slug_field="pk")
 
     class Meta:
