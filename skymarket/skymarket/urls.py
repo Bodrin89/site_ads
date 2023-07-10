@@ -3,7 +3,6 @@ from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
-# TODO здесь необходимо подклюючит нужные нам urls к проекту
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [

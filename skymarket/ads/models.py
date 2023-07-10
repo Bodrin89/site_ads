@@ -6,6 +6,7 @@ from users.models import User
 
 
 class Ad(models.Model):
+    """Модель объявления"""
     image = models.ImageField(upload_to='django_media', null=True, blank=True)
     title = models.CharField(max_length=50)
     price = models.IntegerField()
@@ -15,6 +16,7 @@ class Ad(models.Model):
 
 
 class Comment(models.Model):
+    """Модель комментариев к объявлению"""
     text = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=CASCADE)
     ad = models.ForeignKey(Ad, on_delete=CASCADE)
